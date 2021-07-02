@@ -19,7 +19,6 @@ jobs:
       - run: git config user.name github-actions
       - run: git config user.email github-actions@github.com
       - run: git fetch
-      - run: git fetch
       - run: git checkout preview
       - run: git merge -X theirs develop --allow-unrelated-histories
       - run: flutter config --enable-web
@@ -29,7 +28,7 @@ jobs:
       - run: sed -i 's#<base href="/">#<base href="/ci_cd_test/">#g' build/web/index.html
       - run: rm -rf docs
       - run: mv build/web docs
-      - run: find . -mindepth 1 ! -regex '^./docs\(/.*\)?|^./.git\(/.*\)?' -delete
+      - run: find . -mindepth 1 ! -regex '^./docs\(/.*\)?|./.git\(/.*\)?' -delete
       - run: git add .
       - run: git commit -m "Automatic deployment by github-actions"
       - run: git push origin HEAD:preview --force
