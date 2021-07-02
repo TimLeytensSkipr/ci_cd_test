@@ -16,6 +16,9 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: "stable"
+      - run: git config user.name github-actions
+      - run: git config user.email github-actions@github.com
+      - run: git fetch
       - run: git fetch
       - run: git checkout preview
       - run: git merge develop --allow-unrelated-histories
