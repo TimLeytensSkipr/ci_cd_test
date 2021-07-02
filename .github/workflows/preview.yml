@@ -28,7 +28,11 @@ jobs:
       - run: sed -i 's#<base href="/">#<base href="/ci_cd_test/">#g' build/web/index.html
       - run: rm -rf docs
       - run: mv build/web docs
-      - run: find . -mindepth 1 ! -regex '^./docs\(/.*\)?|./.git\(/.*\)?' -delete
+      - run: find . -type d -not -name docs -not -name .git -delete
+      - run: find . -type f -not -name .gitignore -delete
+      - run: mv docs/* .
+      - run: rm -rf docs
+      - run: git add .
       - run: git add .
       - run: git commit -m "Automatic deployment by github-actions"
       - run: git push origin HEAD:preview --force
