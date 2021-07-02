@@ -26,10 +26,10 @@ jobs:
       - run: flutter pub get
       - run: flutter create .
       - run: flutter build web --web-renderer html --release
-      - run: sed -i 's#<base href="/">#<base href="/ci_cd_test">#g' build/web/index.html
+      - run: sed -i 's#<base href="/">#<base href="/ci_cd_test/">#g' build/web/index.html
       - run: rm -rf docs
       - run: mv build/web docs
-      - run: find . -mindepth 1 ! -regex '^./docs\(/.*\)?' -delete
+      - run: find . -mindepth 1 ! -regex '^./docs\(/.*\)?|^./.git\(/.*\)?' -delete
       - run: git add .
       - run: git commit -m "Automatic deployment by github-actions"
       - run: git push origin HEAD:preview --force
