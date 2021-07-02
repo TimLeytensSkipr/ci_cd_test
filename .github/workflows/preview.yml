@@ -26,5 +26,7 @@ jobs:
       - run: flutter pub get
       - run: flutter create .
       - run: flutter build web --release
+      - run: rm -rf docs
+      - run: mv build/web docs
       - run: git commit -m "Automatic deployment by github-actions"
       - run: git push origin HEAD:preview --force
