@@ -21,7 +21,7 @@ jobs:
       - run: git fetch
       - run: git fetch
       - run: git checkout preview
-      - run: git merge develop --allow-unrelated-histories --strategy=theirs
+      - run: git merge -X theirs develop --allow-unrelated-histories
       - run: flutter config --enable-web
       - run: flutter pub get
       - run: flutter create .
