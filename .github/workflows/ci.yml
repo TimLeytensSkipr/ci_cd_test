@@ -20,3 +20,5 @@ jobs:
       - run: flutter analyze
       - run: flutter test
       - uses: erickzanardo/flutter-gh-pages@v3
+        with:
+          workingDir: docs
