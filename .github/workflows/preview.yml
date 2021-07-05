@@ -29,6 +29,7 @@ jobs:
       - run: rm -rf docs
       - run: mv build/web docs
       - run: find . -maxdepth 1 -type d -not -name docs -not -name .git -exec rm -rv {} \;
+      - run: find . -type f -not -name .gitignore -delete
       - run: mv docs/* .
       - run: rm -rf docs
       - run: git add .
