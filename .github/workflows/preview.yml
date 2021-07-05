@@ -28,8 +28,8 @@ jobs:
       - run: sed -i 's#<base href="/">#<base href="/ci_cd_test/">#g' build/web/index.html
       - run: mv build/web preview
       - run: find . -maxdepth 1 -type d -not -name preview -not -name .git -exec rm -rv {} \;
+      - run: find . -maxdepth 1 -type f -delete
       - run: mv preview/* .
-      - run: rm -rf preview
       - run: rm -rf preview
       - run: git add .
       - run: git commit -m "Automatic deployment by github-actions"
